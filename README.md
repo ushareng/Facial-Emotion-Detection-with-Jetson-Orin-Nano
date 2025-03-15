@@ -10,7 +10,36 @@ This is a lightweight facial emotion detection system using LLaVA (Large Languag
 
 https://github.com/user-attachments/assets/caede134-31ec-4336-beae-41a2b475d328
 
+## Architecture 
 
+```mermaid
+flowchart TD
+    A["User Input (Image Upload)"]
+    B["UI Layer (Streamlit)"]
+    C["Image Preprocessing"]
+    D["Model Inference"]
+    E["Postprocessing"]
+    F["Result Display"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+
+    subgraph ModelDetails [ ]
+        direction LR
+        D1["Load Model<br/>(ggml-model-q4_k.gguf)"]
+        D2["GPU & Context Setup<br/>(n_gpu_layers, CUDA)"]
+        D3["Chat Completion<br/>(Llava15ChatHandler)"]
+    end
+
+    D -.-> D1
+    D -.-> D2
+    D -.-> D3
+
+
+```
 ## Installation
 
 1. **Clone the Repository**:
